@@ -201,6 +201,10 @@
             [currentUUIDs intersectSet:fetchedUUIDs];
             
             validUUIDs = [[currentUUIDs sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"stringValue" ascending:YES]]] mutableCopy];
+            
+            if ([validUUIDs count] == 0) {
+                break;
+            }
         }
     }
     completionHandler(validUUIDs, YES, nil);
