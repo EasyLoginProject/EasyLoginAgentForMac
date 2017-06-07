@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:EasyLogin/EasyLogin.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:EasyLoginDB/EasyLoginDB.xcodeproj">
    </FileRef>
    <FileRef
