@@ -1,0 +1,3 @@
+[submodule "Vendors/EasyLoginLibrary"]
+	path = Vendors/EasyLoginLibrary
+	url = git@github.com:EasyLoginProject/EasyLoginLibrary.git
