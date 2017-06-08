@@ -98,7 +98,7 @@
 }
 
 - (void)removeFromIndexRecordOfType:(NSString*)recordType withUUID:(NSString *)uuid {
-    NSDictionary *record = [self getRecordOfType:recordType withUUID:uuid];
+    NSDictionary *record = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     
     NSMutableDictionary *indexesForRecordsPerAttributeAndValue = [self.indexesForRecordsPerTypeAttributeAndValue objectForKey:recordType];
     
@@ -124,7 +124,7 @@
     return [[[self.indexesForRecordsPerTypeAttributeAndValue objectForKey:recordType] objectForKey:attribute] objectForKey:value];
 }
 
-- (NSDictionary*)getRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid {
+- (NSDictionary*)getRegisteredRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid {
     return [[self.recordsPerTypeAndUUID objectForKey:recordType] objectForKey:uuid];
 }
 
@@ -150,7 +150,7 @@
 #pragma mark - API
 
 - (void)registerRecord:(NSDictionary*)record ofType:(NSString*)recordType withUUID:(NSString*)uuid {
-    NSDictionary *existingRecordWithSameUUID = [self getRecordOfType:recordType withUUID:uuid];
+    NSDictionary *existingRecordWithSameUUID = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     
     if (existingRecordWithSameUUID) {
         [self removeFromIndexRecordOfType:recordType withUUID:uuid];
@@ -168,7 +168,7 @@
     [self unsetRecordOfType:recordType withUUID:uuid];
 }
 
-- (void)getAllRecordsOfType:(NSString*)recordType withAttributes:(NSArray<NSString*> *)attributes andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getAllRegisteredRecordsOfType:(NSString*)recordType withAttributesToReturn:(NSArray<NSString*> *)attributes andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     NSArray *recordsForRequestedType = [[self.recordsPerTypeAndUUID objectForKey:recordType] allObjects];
     NSMutableArray *requestedRecords = [NSMutableArray new];
     
@@ -180,10 +180,10 @@
         [requestedRecords addObject:requestedRecord];
     }
     
-    completionHandler(requestedRecords, YES, nil);
+    completionHandler(requestedRecords, nil);
 }
 
-- (void)getRecordsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     NSMutableArray *validUUIDs = [NSMutableArray new];
     BOOL roundOne = YES;
     
@@ -207,10 +207,10 @@
             }
         }
     }
-    completionHandler(validUUIDs, YES, nil);
+    completionHandler(validUUIDs, nil);
 }
 
-- (void)getRecordsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     NSMutableArray *validUUIDs = [NSMutableArray new];
     
     for (NSString *attribute in [attributesWithValues allKeys]) {
@@ -220,11 +220,11 @@
         [validUUIDs addObjectsFromArray:matchingUUIDs];
     }
     
-    completionHandler(validUUIDs, YES, nil);
+    completionHandler(validUUIDs, nil);
 }
 
-- (void)getRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid andCompletionHandler:(EasyLoginDBRecordInfo_t)completionHandler {
-    NSDictionary *requestedRecord = [self getRecordOfType:recordType withUUID:uuid];
+- (void)getRegisteredRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid andCompletionHandler:(EasyLoginDBRecordInfo_t)completionHandler {
+    NSDictionary *requestedRecord = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     completionHandler(requestedRecord, nil);
 }
 
