@@ -13,17 +13,7 @@ import EasyLogin
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        EasyLoginDBProxy.sharedInstance().getAllRegisteredRecords(ofType: "user", withAttributesToReturn: ["shortname"]) { (records, error) in
-            
-            print(records as Any)
-            
-            EasyLoginDBProxy.sharedInstance().registerRecord(["shortname": "test", "displayname": "Test 1"], ofType: "user", withUUID: UUID.init().uuidString)
-            
-            EasyLoginDBProxy.sharedInstance().getAllRegisteredRecords(ofType: "user", withAttributesToReturn: ["shortname"]) { (records, error) in
-                
-                print(records as Any)
-            }
-        }
+
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

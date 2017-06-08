@@ -228,4 +228,8 @@
     completionHandler(requestedRecord, nil);
 }
 
+- (void)ping {
+    NSLog(@"pong");
+}
+
 @end

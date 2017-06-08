@@ -24,6 +24,8 @@ typedef void (^EasyLoginDBRecordInfo_t)(NSDictionary* record, NSError *error);
 - (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary<NSString*,NSString*>*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler;
 - (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary<NSString*,NSString*>*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler;
 - (void)getRegisteredRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid andCompletionHandler:(EasyLoginDBRecordInfo_t)completionHandler;
-    
+
+- (void)ping;
+
 @end
 
