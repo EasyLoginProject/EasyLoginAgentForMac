@@ -89,7 +89,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Yoann Gini";
+				ORGANIZATIONNAME = EasyLogin;
 				TargetAttributes = {
 					F87E22041EE875AC00CB14A0 = {
 						CreatedOnToolsVersion = 8.3.2;

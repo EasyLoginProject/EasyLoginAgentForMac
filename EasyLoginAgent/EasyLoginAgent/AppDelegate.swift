@@ -3,7 +3,7 @@
 //  EasyLoginAgent
 //
 //  Created by Yoann Gini on 07/06/2017.
-//  Copyright © 2017 Yoann Gini. All rights reserved.
+//  Copyright © 2017 EasyLogin. All rights reserved.
 //
 
 import Cocoa

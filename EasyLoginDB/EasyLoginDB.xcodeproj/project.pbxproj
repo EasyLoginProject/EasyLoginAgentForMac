@@ -88,7 +88,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Yoann Gini";
+				ORGANIZATIONNAME = EasyLogin;
 				TargetAttributes = {
 					F87E22371EE8760A00CB14A0 = {
 						CreatedOnToolsVersion = 8.3.2;
