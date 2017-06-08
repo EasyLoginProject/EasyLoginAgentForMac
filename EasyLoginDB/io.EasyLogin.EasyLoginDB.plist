@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LowPriorityIO</key>
+	<false/>
+	<key>MachServices</key>
+	<dict>
+		<key>io.EasyLogin.EasyLoginDB</key>
+		<true/>
+	</dict>
+	<key>Label</key>
+	<string>io.EasyLogin.EasyLoginDB</string>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ProcessType</key>
+	<string>Adaptive</string>
+	<key>StandardOutPath</key>
+	<string>/var/log/EasyLoginDB.operational.log</string>
+	<key>StandardErrorPath</key>
+	<string>/var/log/EasyLoginDB.error.log</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/Frameworks/EasyLogin.framework/XPCServices/EasyLoginDB.xpc/Contents/MacOS/EasyLoginDB</string>
+	</array>
+</dict>
+</plist>

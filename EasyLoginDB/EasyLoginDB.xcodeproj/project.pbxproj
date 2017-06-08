@@ -19,6 +19,7 @@
 		F87E223F1EE8760A00CB14A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F87E22411EE8760A00CB14A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F87E22481EE8861A00CB14A0 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F8A47C941EE9338200BB2BAF /* io.EasyLogin.EasyLoginDB.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = io.EasyLogin.EasyLoginDB.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +36,7 @@
 		F87E222F1EE8760A00CB14A0 = {
 			isa = PBXGroup;
 			children = (
+				F8A47C941EE9338200BB2BAF /* io.EasyLogin.EasyLoginDB.plist */,
 				F87E223A1EE8760A00CB14A0 /* EasyLoginDB */,
 				F87E22391EE8760A00CB14A0 /* Products */,
 			);
@@ -271,6 +273,7 @@
 				F87E22461EE8760A00CB14A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
