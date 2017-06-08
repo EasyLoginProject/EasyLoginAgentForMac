@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C20BA28409CC4482CC71E9DDBC46ECC851EEAD4B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "24EF84BD9654D0013E616252ECFE796565CBC382" : 9223372036854775807,
+    "C20BA28409CC4482CC71E9DDBC46ECC851EEAD4B" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EDC20114-365F-4A4F-893B-CCF3CB19FDF0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "24EF84BD9654D0013E616252ECFE796565CBC382" : "EasyLoginAgentForMac\/Vendors\/EasyLoginLibrary\/",
+    "C20BA28409CC4482CC71E9DDBC46ECC851EEAD4B" : "EasyLoginAgentForMac\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "EasyLoginAgentForMac",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "EasyLoginAgentForMac.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:EasyLoginProject\/EasyLoginLibrary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "24EF84BD9654D0013E616252ECFE796565CBC382"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:EasyLoginProject\/EasyLoginAgentForMac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C20BA28409CC4482CC71E9DDBC46ECC851EEAD4B"
+    }
+  ]
+}
