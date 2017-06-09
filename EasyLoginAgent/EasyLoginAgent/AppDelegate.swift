@@ -16,6 +16,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         webServiceConnector = ELWebServiceConnector(baseURL:URL(string:"http://develop.eu.easylogin.cloud/")!, headers: nil)
         
+        EasyLoginDBProxy.sharedInstance().testXPCConnection { (error) in
+            if let error = error {
+                print("EasyLoginAgent - XPC test done with error: \(error)")
+            } else {
+                print("EasyLoginAgent - XPC test done with success")
+            }
+        }
+        
         syncRegisteredUsers()
     }
     
@@ -39,14 +47,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             print("EasyLoginAgent - Fetch all registered users for cleanup")
-            EasyLoginDBProxy.sharedInstance().getAllRegisteredRecords(ofType: "users", withAttributesToReturn: ["uuid"], andCompletionHandler: { (registeredUsersInfo, error) in
-                
-                if let registeredUsersInfo = registeredUsersInfo {
-                    let registeredUUIDs = registeredUsersInfo.map({$0["uuid"]! as! String})
-                    
+            EasyLoginDBProxy.sharedInstance().getAllRegisteredUUIDs(ofType: "user", andCompletionHandler: { (registeredUUIDs, error) in
+                if let registeredUUIDs = registeredUUIDs {
                     let existingUUIDs = Set(registeredUUIDs)
                     let wantedUUIDs = Set(assignedUUIDs)
-                    let unwantedUUIDs = existingUUIDs.symmetricDifference(wantedUUIDs)
+                    let unwantedUUIDs = existingUUIDs.subtracting(wantedUUIDs)
                     
                     for unwantedUUID in unwantedUUIDs {
                         

@@ -35,9 +35,9 @@
 #pragma mark - SPI
 
 - (void)reloadFromDisk {
+    NSLog(@"Loading DB from disk");
     NSMutableDictionary *loadedInfo = [NSMutableDictionary dictionaryWithContentsOfFile:[self flatFilePath]];
     if ([loadedInfo count] > 0) {
-#warning ygi: need to check if [NSMutableDictionary dictionaryWithContentsOfFile:] return mutable subnodes too (nested dict)
         self.recordsPerTypeAndUUID = loadedInfo;
     }
     
@@ -50,9 +50,7 @@
 }
 
 - (void)saveToDisk {
-    NSLog(@"Records:\n%@", self.recordsPerTypeAndUUID);
-    NSLog(@"Indexes:\n%@", self.indexesForRecordsPerTypeAttributeAndValue);
-    
+    NSLog(@"Saving DB to disk");
     [self.recordsPerTypeAndUUID writeToFile:[self flatFilePath] atomically:YES];
 }
 
@@ -69,6 +67,8 @@
 }
 
 - (void)addToIndexRecord:(NSDictionary *)record ofType:(NSString*)recordType withUUID:(NSString *)uuid {
+    NSLog(@"Indexing record with UUID %@", uuid);
+    
     NSMutableDictionary *indexesForRecordsPerAttributeAndValue = [self.indexesForRecordsPerTypeAttributeAndValue objectForKey:recordType];
     
     if (!indexesForRecordsPerAttributeAndValue) {
@@ -98,6 +98,8 @@
 }
 
 - (void)removeFromIndexRecordOfType:(NSString*)recordType withUUID:(NSString *)uuid {
+    NSLog(@"Unindexing record with UUID %@", uuid);
+    
     NSDictionary *record = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     
     NSMutableDictionary *indexesForRecordsPerAttributeAndValue = [self.indexesForRecordsPerTypeAttributeAndValue objectForKey:recordType];
@@ -129,6 +131,8 @@
 }
 
 - (void)setRecord:(NSDictionary*)record ofType:(NSString*)recordType withUUID:(NSString*)uuid {
+    NSLog(@"Set record with UUID %@", uuid);
+    
     NSMutableDictionary *recordsForRequestedTypePerUUID = [self.recordsPerTypeAndUUID objectForKey:recordType];
     
     if (!recordsForRequestedTypePerUUID) {
@@ -140,6 +144,8 @@
 }
 
 - (void)unsetRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid {
+    NSLog(@"Unset record with UUID %@", uuid);
+    
     NSMutableDictionary *recordsForRequestedTypePerUUID = [self.recordsPerTypeAndUUID objectForKey:recordType];
     
     if (recordsForRequestedTypePerUUID) {
@@ -150,6 +156,7 @@
 #pragma mark - API
 
 - (void)registerRecord:(NSDictionary*)record ofType:(NSString*)recordType withUUID:(NSString*)uuid {
+    NSLog(@"Register record with UUID %@", uuid);
     NSDictionary *existingRecordWithSameUUID = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     
     if (existingRecordWithSameUUID) {
@@ -164,11 +171,14 @@
 }
 
 - (void)unregisterRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid {
+    NSLog(@"Unregister record with UUID %@", uuid);
     [self removeFromIndexRecordOfType:recordType withUUID:uuid];
     [self unsetRecordOfType:recordType withUUID:uuid];
 }
 
 - (void)getAllRegisteredRecordsOfType:(NSString*)recordType withAttributesToReturn:(NSArray<NSString*> *)attributes andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+    NSLog(@"Get all registered records");
+    
     NSArray *recordsForRequestedType = [[self.recordsPerTypeAndUUID objectForKey:recordType] allObjects];
     NSMutableArray *requestedRecords = [NSMutableArray new];
     
@@ -183,7 +193,17 @@
     completionHandler(requestedRecords, nil);
 }
 
+- (void)getAllRegisteredUUIDsOfType:(NSString*)recordType andCompletionHandler:(EasyLoginDBUUIDsResult_t)completionHandler {
+    NSLog(@"Get all registered UUIDs");
+    
+    NSArray *uuidsForRequestedType = [[self.recordsPerTypeAndUUID objectForKey:recordType] allKeys];
+    
+    completionHandler(uuidsForRequestedType, nil);
+}
+
 - (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+    NSLog(@"Get regsiterred records matching all attributes %@", attributesWithValues);
+    
     NSMutableArray *validUUIDs = [NSMutableArray new];
     BOOL roundOne = YES;
     
@@ -211,6 +231,8 @@
 }
 
 - (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+    NSLog(@"Get regsiterred records matching any attributes %@", attributesWithValues);
+    
     NSMutableArray *validUUIDs = [NSMutableArray new];
     
     for (NSString *attribute in [attributesWithValues allKeys]) {
@@ -224,12 +246,19 @@
 }
 
 - (void)getRegisteredRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid andCompletionHandler:(EasyLoginDBRecordInfo_t)completionHandler {
+    NSLog(@"Get regsiterred record with UUID %@", uuid);
+    
     NSDictionary *requestedRecord = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     completionHandler(requestedRecord, nil);
 }
 
 - (void)ping {
     NSLog(@"pong");
+}
+
+- (void)testXPCConnection:(EasyLoginDBErrorHandler_t)completionHandler {
+    NSLog(@"EasyLogin DB recieve test with success");
+    completionHandler(nil);
 }
 
 @end
