@@ -14,7 +14,7 @@
 
 @property NSMutableDictionary *recordsPerTypeAndUUID;
 @property NSMutableDictionary *indexesForRecordsPerTypeAttributeAndValue;
-
+@property NSLock *recordsLock;
 @end
 
 @implementation EasyLoginDB
@@ -27,6 +27,7 @@
     if (self) {
         self.recordsPerTypeAndUUID = [NSMutableDictionary new];
         self.indexesForRecordsPerTypeAttributeAndValue = [NSMutableDictionary new];
+        self.recordsLock = [NSLock new];
         [self reloadFromDisk];
     }
     return self;
@@ -156,6 +157,7 @@
 #pragma mark - API
 
 - (void)registerRecord:(NSDictionary*)record ofType:(NSString*)recordType withUUID:(NSString*)uuid {
+    [self.recordsLock lock];
     NSLog(@"Register record with UUID %@", uuid);
     NSDictionary *existingRecordWithSameUUID = [self getRegisteredRecordOfType:recordType withUUID:uuid];
     
@@ -168,12 +170,16 @@
     [self addToIndexRecord:record ofType:recordType withUUID:uuid];
     
     [self saveToDisk];
+    [self.recordsLock unlock];
 }
 
 - (void)unregisterRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid {
+    [self.recordsLock lock];
     NSLog(@"Unregister record with UUID %@", uuid);
     [self removeFromIndexRecordOfType:recordType withUUID:uuid];
     [self unsetRecordOfType:recordType withUUID:uuid];
+    [self saveToDisk];
+    [self.recordsLock unlock];
 }
 
 - (void)getAllRegisteredRecordsOfType:(NSString*)recordType withAttributesToReturn:(NSArray<NSString*> *)attributes andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
