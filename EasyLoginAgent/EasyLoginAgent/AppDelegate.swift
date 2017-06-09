@@ -39,19 +39,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 for user in users {
                     print("EasyLoginAgent - Register user \(user)")
-                    EasyLoginDBProxy.sharedInstance().registerRecord(user.dictionaryRepresentation(), ofType:user.recordEntity(), withUUID: "")
-                    wantedUUIDs.insert("")
+                    EasyLoginDBProxy.sharedInstance().registerRecord(user.dictionaryRepresentation(), ofType:user.recordEntity(), withUUID:user.identifier())
+                    wantedUUIDs.insert(user.identifier())
                 }
                 
                 print("EasyLoginAgent - Fetch all registered users for cleanup")
-                EasyLoginDBProxy.sharedInstance().getAllRegisteredUUIDs(ofType: ELUser.recordEntity(), andCompletionHandler: { (registeredUUIDs, error) in
+                EasyLoginDBProxy.sharedInstance().getAllRegisteredUUIDs(ofType:ELUser.recordEntity(), andCompletionHandler: { (registeredUUIDs, error) in
                     if let registeredUUIDs = registeredUUIDs {
                         let existingUUIDs = Set(registeredUUIDs)
                         let unwantedUUIDs = existingUUIDs.subtracting(wantedUUIDs)
                         
                         for unwantedUUID in unwantedUUIDs {
                             print("EasyLoginAgent - Unregister user with UUID \(unwantedUUID)")
-                            EasyLoginDBProxy.sharedInstance().unregisterRecord(ofType: "user", withUUID: unwantedUUID)
+                            EasyLoginDBProxy.sharedInstance().unregisterRecord(ofType:ELUser.recordEntity(), withUUID: unwantedUUID)
                         }
                     }
                 })
