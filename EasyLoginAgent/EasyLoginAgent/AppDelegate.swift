@@ -45,7 +45,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 print("EasyLoginAgent - Fetch all registered users for cleanup")
                 EasyLoginDBProxy.sharedInstance().getAllRegisteredUUIDs(ofType:ELUser.recordEntity(), andCompletionHandler: { (registeredUUIDs, error) in
+                    
                     if let registeredUUIDs = registeredUUIDs {
+                        print("EasyLoginAgent - Registered UUIDs before cleanup: \(registeredUUIDs)")
                         let existingUUIDs = Set(registeredUUIDs)
                         let unwantedUUIDs = existingUUIDs.subtracting(wantedUUIDs)
                         
@@ -53,9 +55,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                             print("EasyLoginAgent - Unregister user with UUID \(unwantedUUID)")
                             EasyLoginDBProxy.sharedInstance().unregisterRecord(ofType:ELUser.recordEntity(), withUUID: unwantedUUID)
                         }
+                    } else {
+                        print("EasyLoginAgent - No registered UUIDs found during the cleanup step.")
                     }
+                    print("EasyLoginAgent - Cleanup done")
                 })
-
+                
+                print("EasyLoginAgent - Sync done")
             }
         }) {
             self.webServiceConnector?.enqueue(operation)
