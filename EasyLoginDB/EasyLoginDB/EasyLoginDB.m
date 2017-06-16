@@ -191,7 +191,10 @@
     for (NSDictionary *record in recordsForRequestedType) {
         NSMutableDictionary *requestedRecord = [NSMutableDictionary new];
         for (NSString* key in attributes) {
-            [requestedRecord setObject:[record objectForKey:key] forKey:key];
+            id requestedAttribute = [record objectForKey:key];
+            if (requestedAttribute) {
+                [requestedRecord setObject:requestedAttribute forKey:key];
+            }
         }
         [requestedRecords addObject:requestedRecord];
     }
