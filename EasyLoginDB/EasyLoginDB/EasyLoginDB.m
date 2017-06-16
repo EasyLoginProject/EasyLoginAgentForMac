@@ -210,7 +210,7 @@
     completionHandler(uuidsForRequestedType, nil);
 }
 
-- (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getRegisteredRecordUUIDsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     NSLog(@"Get regsiterred records matching all attributes %@", attributesWithValues);
     
     NSMutableArray *validUUIDs = [NSMutableArray new];
@@ -239,7 +239,7 @@
     completionHandler(validUUIDs, nil);
 }
 
-- (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getRegisteredRecordUUIDsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     NSLog(@"Get regsiterred records matching any attributes %@", attributesWithValues);
     
     NSMutableArray *validUUIDs = [NSMutableArray new];

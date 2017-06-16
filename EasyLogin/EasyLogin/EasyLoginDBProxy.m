@@ -63,16 +63,16 @@
     }] getAllRegisteredUUIDsOfType:recordType andCompletionHandler:completionHandler];
 }
 
-- (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary<NSString*,NSString*>*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getRegisteredRecordUUIDsOfType:(NSString*)recordType matchingAllAttributes:(NSDictionary<NSString*,NSString*>*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     [[self.xpcService remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
         completionHandler(nil, error);
-    }] getRegisteredRecordsOfType:recordType matchingAllAttributes:attributesWithValues andCompletionHandler:completionHandler];
+    }] getRegisteredRecordUUIDsOfType:recordType matchingAllAttributes:attributesWithValues andCompletionHandler:completionHandler];
 }
 
-- (void)getRegisteredRecordsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary<NSString*,NSString*>*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
+- (void)getRegisteredRecordUUIDsOfType:(NSString*)recordType matchingAnyAttributes:(NSDictionary<NSString*,NSString*>*)attributesWithValues andCompletionHandler:(EasyLoginDBQueryResult_t)completionHandler {
     [[self.xpcService remoteObjectProxyWithErrorHandler:^(NSError * _Nonnull error) {
         completionHandler(nil, error);
-    }] getRegisteredRecordsOfType:recordType matchingAnyAttributes:attributesWithValues andCompletionHandler:completionHandler];
+    }] getRegisteredRecordUUIDsOfType:recordType matchingAnyAttributes:attributesWithValues andCompletionHandler:completionHandler];
 }
 
 - (void)getRegisteredRecordOfType:(NSString*)recordType withUUID:(NSString*)uuid andCompletionHandler:(EasyLoginDBRecordInfo_t)completionHandler {
