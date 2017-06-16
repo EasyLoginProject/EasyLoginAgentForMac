@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F878201F1EF487D500915BBF /* EasyLoginXPCResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = F878201E1EF487D500915BBF /* EasyLoginXPCResponder.m */; };
 		F87E223E1EE8760A00CB14A0 /* EasyLoginDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F87E223D1EE8760A00CB14A0 /* EasyLoginDB.m */; };
 		F87E22401EE8760A00CB14A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F87E223F1EE8760A00CB14A0 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F878201D1EF487D500915BBF /* EasyLoginXPCResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyLoginXPCResponder.h; sourceTree = "<group>"; };
+		F878201E1EF487D500915BBF /* EasyLoginXPCResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyLoginXPCResponder.m; sourceTree = "<group>"; };
 		F87E22381EE8760A00CB14A0 /* EasyLoginDB.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = EasyLoginDB.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87E223B1EE8760A00CB14A0 /* EasyLoginDBProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyLoginDBProtocol.h; sourceTree = "<group>"; };
 		F87E223C1EE8760A00CB14A0 /* EasyLoginDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyLoginDB.h; sourceTree = "<group>"; };
@@ -55,6 +58,8 @@
 				F87E22481EE8861A00CB14A0 /* Constants.h */,
 				F87E223C1EE8760A00CB14A0 /* EasyLoginDB.h */,
 				F87E223D1EE8760A00CB14A0 /* EasyLoginDB.m */,
+				F878201D1EF487D500915BBF /* EasyLoginXPCResponder.h */,
+				F878201E1EF487D500915BBF /* EasyLoginXPCResponder.m */,
 				F87E223F1EE8760A00CB14A0 /* main.m */,
 				F87E22411EE8760A00CB14A0 /* Info.plist */,
 			);
@@ -131,6 +136,7 @@
 			files = (
 				F87E22401EE8760A00CB14A0 /* main.m in Sources */,
 				F87E223E1EE8760A00CB14A0 /* EasyLoginDB.m in Sources */,
+				F878201F1EF487D500915BBF /* EasyLoginXPCResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

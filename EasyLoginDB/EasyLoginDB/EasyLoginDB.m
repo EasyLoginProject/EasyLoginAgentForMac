@@ -21,6 +21,15 @@
 
 #pragma mark - Object Lifecycle
 
++ (instancetype)sharedInstance {
+    static id sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [self new];
+    });
+    return sharedInstance;
+}
+
 - (instancetype)init
 {
     self = [super init];
