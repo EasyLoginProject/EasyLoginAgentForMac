@@ -92,7 +92,7 @@
 				TargetAttributes = {
 					F87E22371EE8760A00CB14A0 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = CRXPBZF3N4;
+						DevelopmentTeam = JXHB9UP6QZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -229,12 +229,14 @@
 		F87E22451EE8760A00CB14A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CRXPBZF3N4;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				INFOPLIST_FILE = EasyLoginDB/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.EasyLoginDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -242,12 +244,14 @@
 		F87E22461EE8760A00CB14A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CRXPBZF3N4;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				INFOPLIST_FILE = EasyLoginDB/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.EasyLoginDB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
