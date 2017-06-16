@@ -167,6 +167,7 @@
 				TargetAttributes = {
 					F87E22521EE8AC0F00CB14A0 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = JXHB9UP6QZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -346,10 +347,11 @@
 		F87E225C1EE8AC0F00CB14A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -373,6 +375,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
