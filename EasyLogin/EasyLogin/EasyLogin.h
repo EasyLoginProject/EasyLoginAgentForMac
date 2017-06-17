@@ -10,4 +10,5 @@
 
 #import <EasyLogin/EasyLoginDBProtocol.h>
 #import <EasyLogin/EasyLoginDBProxy.h>
+#import <EasyLogin/ELAsyncBlockToManageAsOperation.h>
 

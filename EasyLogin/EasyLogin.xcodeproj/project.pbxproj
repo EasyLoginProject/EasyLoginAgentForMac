@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F87917CE1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F87917CC1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F87917CF1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F87917CD1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.m */; };
 		F87E22581EE8AC0F00CB14A0 /* EasyLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = F87E22561EE8AC0F00CB14A0 /* EasyLogin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F87E22601EE920B500CB14A0 /* EasyLoginDBProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = F87E225E1EE920B500CB14A0 /* EasyLoginDBProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F87E22631EE9211E00CB14A0 /* EasyLoginDBProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F87E22621EE9211E00CB14A0 /* EasyLoginDBProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +55,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F87917CC1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELAsyncBlockToManageAsOperation.h; sourceTree = "<group>"; };
+		F87917CD1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELAsyncBlockToManageAsOperation.m; sourceTree = "<group>"; };
 		F87E22531EE8AC0F00CB14A0 /* EasyLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87E22561EE8AC0F00CB14A0 /* EasyLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EasyLogin.h; sourceTree = "<group>"; };
 		F87E22571EE8AC0F00CB14A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				F87E22561EE8AC0F00CB14A0 /* EasyLogin.h */,
 				F87E225E1EE920B500CB14A0 /* EasyLoginDBProxy.h */,
 				F87E22641EE9214600CB14A0 /* EasyLoginDBProxy.m */,
+				F87917CC1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.h */,
+				F87917CD1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.m */,
 				F87E22571EE8AC0F00CB14A0 /* Info.plist */,
 			);
 			path = EasyLogin;
@@ -128,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F87E22581EE8AC0F00CB14A0 /* EasyLogin.h in Headers */,
+				F87917CE1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.h in Headers */,
 				F87E22601EE920B500CB14A0 /* EasyLoginDBProxy.h in Headers */,
 				F87E22631EE9211E00CB14A0 /* EasyLoginDBProtocol.h in Headers */,
 			);
@@ -231,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87917CF1EF5056E004249E8 /* ELAsyncBlockToManageAsOperation.m in Sources */,
 				F87E22651EE9214600CB14A0 /* EasyLoginDBProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
