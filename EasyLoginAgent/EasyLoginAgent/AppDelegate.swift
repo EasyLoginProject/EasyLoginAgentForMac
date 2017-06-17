@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         webServiceConnector = ELWebServiceConnector(baseURL:URL(string:"http://develop.eu.easylogin.cloud/")!, headers: nil)
         
-        EasyLoginDBProxy.sharedInstance().testXPCConnection { (error) in
+        ELCachingDBProxy.sharedInstance().testXPCConnection { (error) in
             if let error = error {
                 print("EasyLoginAgent - XPC test done with error: \(error)")
             } else {
@@ -39,12 +39,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 for user in users {
                     print("EasyLoginAgent - Register user \(user)")
-                    EasyLoginDBProxy.sharedInstance().registerRecord(user.dictionaryRepresentation(), ofType:user.recordEntity(), withUUID:user.identifier())
+                    ELCachingDBProxy.sharedInstance().registerRecord(user.dictionaryRepresentation(), ofType:user.recordEntity(), withUUID:user.identifier())
                     wantedUUIDs.insert(user.identifier())
                 }
                 
                 print("EasyLoginAgent - Fetch all registered users for cleanup")
-                EasyLoginDBProxy.sharedInstance().getAllRegisteredUUIDs(ofType:ELUser.recordEntity(), andCompletionHandler: { (registeredUUIDs, error) in
+                ELCachingDBProxy.sharedInstance().getAllRegisteredUUIDs(ofType:ELUser.recordEntity(), andCompletionHandler: { (registeredUUIDs, error) in
                     
                     if let registeredUUIDs = registeredUUIDs {
                         print("EasyLoginAgent - Registered UUIDs before cleanup: \(registeredUUIDs)")
@@ -53,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         
                         for unwantedUUID in unwantedUUIDs {
                             print("EasyLoginAgent - Unregister user with UUID \(unwantedUUID)")
-                            EasyLoginDBProxy.sharedInstance().unregisterRecord(ofType:ELUser.recordEntity(), withUUID: unwantedUUID)
+                            ELCachingDBProxy.sharedInstance().unregisterRecord(ofType:ELUser.recordEntity(), withUUID: unwantedUUID)
                         }
                     } else {
                         print("EasyLoginAgent - No registered UUIDs found during the cleanup step.")
