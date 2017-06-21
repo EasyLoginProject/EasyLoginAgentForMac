@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 for record in records  {
                     let device = record as! ELDevice
                     
-                    if device.serialNumber == ELToolbox.serialNumber() {
+                    if device.string(forProperty: kELDeviceSerialNumberKey) == ELToolbox.serialNumber() {
                         print("EasyLoginAgent - Record with our serial number found")
                         maybeMyself = device
                         break
@@ -95,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if let updatedMyself = updatedMyself {
                     let myself = updatedMyself as! ELDevice
                     
-                    print("Sync based on info \(myself)")
+                    print("EasyLoginAgent - Sync based on info \(myself)")
                 } else {
                     print("EasyLoginAgent - Unable to fetch our own record, no sync possible")
                 }
