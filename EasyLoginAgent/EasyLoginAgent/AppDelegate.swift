@@ -11,10 +11,11 @@ import EasyLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var webServiceConnector: ELWebServiceConnector?
+    var server: ELServer?
+    var myRecord: ELDevice?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        webServiceConnector = ELWebServiceConnector(baseURL:URL(string:"http://develop.eu.easylogin.cloud/")!, headers: nil)
+        server = ELServer(baseURL: URL(string:"http://demo.eu.easylogin.cloud/")!)
         
         ELCachingDBProxy.sharedInstance().testXPCConnection { (error) in
             if let error = error {
@@ -24,7 +25,69 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        syncRegisteredUsers()
+        registerMyDevice { (myself) in
+            self.myRecord = myself
+            self.syncRegisteredUsers()
+        }
+    }
+    
+    func registerMyDevice(completionHandler: @escaping ((ELDevice?) -> ())) {
+        
+        server?.getAllRecords(withEntityClass: ELDevice.recordClass(), completionBlock: { (records, error) in
+            var maybeMyself: ELDevice?
+            
+            if let records = records {
+                for record in records  {
+                    let device = record as! ELDevice
+                    
+                    if device.serialNumber == ELToolbox.serialNumber() {
+                        maybeMyself = device
+                        break
+                    }
+                }
+            }
+            
+            if let myself = maybeMyself {
+                completionHandler(myself)
+            } else {
+                let myProperties = ELRecordProperties(dictionary: ["deviceName" : Host.current().localizedName!,
+                                                                   "serialNumber" : ELToolbox.serialNumber(),
+                                                                   "cdsSelectionMode": "auto"],
+                                                      mapping: nil)
+                
+                if let myProperties = myProperties {
+                    self.server?.createNewRecord(withEntityClass: ELDevice.recordClass(),
+                                            properties: myProperties,
+                                            completionBlock: { (record, error) in
+                                                if let record = record {
+                                                    completionHandler(record as? ELDevice)
+                                                } else {
+                                                    completionHandler(nil)
+                                                }
+                    })
+                } else {
+                    completionHandler(nil)
+                }
+            }
+        })
+
+        
+        
+    }
+    
+    func listAllComputerRecord() {
+        print("EasyLoginAgent - Fetch all devices")
+        server?.getAllRecords(withEntityClass: ELDevice.recordClass(), completionBlock: { (records, error) in
+            if let records = records {
+                for record in records  {
+                    let device = record as! ELDevice
+                    
+                    print("EasyLoginAgent - Devices: \(device.deviceName ?? "NO NAME") \(device.serialNumber ?? "NO SERIAL NUMBER")")
+                }
+                
+                
+            }
+        })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -33,14 +96,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func syncRegisteredUsers() {
         print("EasyLoginAgent - Fetch all assigned users for registration and update")
-        if let operation = self.webServiceConnector?.getAllUsersOperation(completionBlock: { (users, operation) in
-            if let users = users {
+        
+        if let myRecord = myRecord {
+            server?.getUpdatedRecord(myRecord, completionBlock: { (updatedMyself, error) in
+                if let updatedMyself = updatedMyself {
+                    let myself = updatedMyself as! ELDevice
+                    
+                    print("Sync based on info \(myself)")
+                } else {
+                    print("EasyLoginAgent - Unable to fetch our own record, no sync possible")
+                }
+            })
+
+        } else {
+            print("EasyLoginAgent - Unable to fetch our own record, no sync possible")
+        }
+        
+        server?.getAllRecords(withEntity: ELUser.recordEntity(), completionBlock: { (records, error) in
+            
+            if let records = records {
+                
                 var wantedUUIDs = Set<String>()
                 
-                for user in users {
-                    print("EasyLoginAgent - Register user \(user)")
-                    ELCachingDBProxy.sharedInstance().registerRecord(user.dictionaryRepresentation(), ofType:user.recordEntity(), withUUID:user.identifier())
-                    wantedUUIDs.insert(user.identifier())
+                for record in records {
+                    self.server?.getUpdatedRecord(record, completionBlock: { (updatedRecord, error) in
+                        print("EasyLoginAgent - Register record \(String(describing: updatedRecord))")
+                        ELCachingDBProxy.sharedInstance().registerRecord(updatedRecord?.dictionaryRepresentation(), ofType:updatedRecord?.recordEntity(), withUUID:updatedRecord?.identifier())
+                    })
+                    
+                    wantedUUIDs.insert(record.identifier())
                 }
                 
                 print("EasyLoginAgent - Fetch all registered users for cleanup")
@@ -62,10 +146,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 })
                 
                 print("EasyLoginAgent - Sync done")
+                
             }
-        }) {
-            self.webServiceConnector?.enqueue(operation)
-        }
+        })
     }
 }
 
