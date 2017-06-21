@@ -32,15 +32,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func registerMyDevice(completionHandler: @escaping ((ELDevice?) -> ())) {
-        
+        print("EasyLoginAgent - Looking for existing device records")
         server?.getAllRecords(withEntityClass: ELDevice.recordClass(), completionBlock: { (records, error) in
             var maybeMyself: ELDevice?
             
             if let records = records {
+                print("EasyLoginAgent - Found multiple records, looking for the one matching our serial number")
                 for record in records  {
                     let device = record as! ELDevice
                     
                     if device.serialNumber == ELToolbox.serialNumber() {
+                        print("EasyLoginAgent - Record with our serial number found")
                         maybeMyself = device
                         break
                     }
@@ -48,24 +50,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             if let myself = maybeMyself {
+                print("EasyLoginAgent - Device record found")
                 completionHandler(myself)
             } else {
+                print("EasyLoginAgent - Device record not found, listing our own invetory properties")
                 let myProperties = ELRecordProperties(dictionary: ["deviceName" : Host.current().localizedName!,
                                                                    "serialNumber" : ELToolbox.serialNumber(),
                                                                    "cdsSelectionMode": "auto"],
                                                       mapping: nil)
                 
                 if let myProperties = myProperties {
+                    print("EasyLoginAgent - Inventory properties ready, sending request to create our own record")
                     self.server?.createNewRecord(withEntityClass: ELDevice.recordClass(),
                                             properties: myProperties,
                                             completionBlock: { (record, error) in
                                                 if let record = record {
+                                                    print("EasyLoginAgent - Record created with success")
                                                     completionHandler(record as? ELDevice)
                                                 } else {
+                                                    print("EasyLoginAgent - Unable to create record, error \(String(describing: error))")
                                                     completionHandler(nil)
                                                 }
                     })
                 } else {
+                    print("EasyLoginAgent - Error! Unable to list our own inventory properties")
                     completionHandler(nil)
                 }
             }
@@ -73,21 +81,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         
         
-    }
-    
-    func listAllComputerRecord() {
-        print("EasyLoginAgent - Fetch all devices")
-        server?.getAllRecords(withEntityClass: ELDevice.recordClass(), completionBlock: { (records, error) in
-            if let records = records {
-                for record in records  {
-                    let device = record as! ELDevice
-                    
-                    print("EasyLoginAgent - Devices: \(device.deviceName ?? "NO NAME") \(device.serialNumber ?? "NO SERIAL NUMBER")")
-                }
-                
-                
-            }
-        })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
