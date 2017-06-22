@@ -13,6 +13,7 @@ import EasyLogin
 class AppDelegate: NSObject, NSApplicationDelegate {
     var server: ELServer?
     var myRecord: ELDevice?
+    var notificationObject: NSObjectProtocol?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         server = ELServer(baseURL: URL(string:"http://demo.eu.easylogin.cloud/")!)
@@ -24,6 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("EasyLoginAgent - XPC test done with success")
             }
         }
+        
+        notificationObject = NotificationCenter.default.addObserver(forName:Notification.Name(kELServerUpdateNotification), object:nil, queue:nil, using: { (notification) in
+            print("EasyLoginAgent - Server has changed, we start the sync")
+            self.syncRegisteredUsers()
+        })
         
         registerMyDevice { (myself) in
             self.myRecord = myself
@@ -55,8 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             } else {
                 print("EasyLoginAgent - Device record not found, listing our own invetory properties")
                 let myProperties = ELRecordProperties(dictionary: ["deviceName" : Host.current().localizedName!,
-                                                                   "serialNumber" : ELToolbox.serialNumber(),
-                                                                   "cdsSelectionMode": "auto"],
+                                                                   "serialNumber" : ELToolbox.serialNumber()],
                                                       mapping: nil)
                 
                 if let myProperties = myProperties {
