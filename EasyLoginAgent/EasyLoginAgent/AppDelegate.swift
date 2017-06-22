@@ -26,15 +26,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        notificationObject = NotificationCenter.default.addObserver(forName:Notification.Name(kELServerUpdateNotification), object:nil, queue:nil, using: { (notification) in
-            print("EasyLoginAgent - Server has changed, we start the sync")
-            self.syncRegisteredUsers()
-        })
         
         registerMyDevice { (myself) in
             self.myRecord = myself
             self.syncRegisteredUsers()
         }
+        
+        notificationObject = NotificationCenter.default.addObserver(forName:Notification.Name(kELServerUpdateNotification), object:nil, queue:nil, using: { (notification) in
+            print("EasyLoginAgent - Server has changed, we start the sync")
+            self.syncRegisteredUsers()
+        })
     }
     
     func registerMyDevice(completionHandler: @escaping ((ELDevice?) -> ())) {
@@ -108,6 +109,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         } else {
             print("EasyLoginAgent - Unable to fetch our own record, no sync possible")
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10), execute: {
+                self.syncRegisteredUsers()
+            })
         }
         
         server?.getAllRecords(withEntity: ELUser.recordEntity(), completionBlock: { (records, error) in
