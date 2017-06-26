@@ -21,6 +21,7 @@
 		F87E220C1EE875AC00CB14A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F87E220F1EE875AC00CB14A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F87E22111EE875AC00CB14A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8F159E71F00EC1300DF65F1 /* EasyLoginAgent-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EasyLoginAgent-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,7 @@
 		F87E22071EE875AC00CB14A0 /* EasyLoginAgent */ = {
 			isa = PBXGroup;
 			children = (
+				F8F159E71F00EC1300DF65F1 /* EasyLoginAgent-Bridging-Header.h */,
 				F87E22081EE875AC00CB14A0 /* AppDelegate.swift */,
 				F87E220C1EE875AC00CB14A0 /* Assets.xcassets */,
 				F87E220E1EE875AC00CB14A0 /* Main.storyboard */,
@@ -104,7 +106,7 @@
 				TargetAttributes = {
 					F87E22041EE875AC00CB14A0 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = CRXPBZF3N4;
+						DevelopmentTeam = JXHB9UP6QZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,17 +260,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CRXPBZF3N4;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = EasyLoginAgent/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.EasyLoginAgent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyLoginAgent/EasyLoginAgent-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -277,17 +282,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CRXPBZF3N4;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = EasyLoginAgent/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.EasyLoginAgent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyLoginAgent/EasyLoginAgent-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -9,6 +9,6 @@
 #ifndef EasyLoginAdmin_Bridging_Header_h
 #define EasyLoginAdmin_Bridging_Header_h
 
-#import "EasyLogin.h"
+#import <EasyLogin/EasyLogin.h>
 
 #endif /* EasyLoginAdmin_Bridging_Header_h */

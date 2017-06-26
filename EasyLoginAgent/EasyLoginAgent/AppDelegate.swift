@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import EasyLogin
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,7 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var notificationObject: NSObjectProtocol?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        server = ELServer(baseURL: URL(string:"http://demo.eu.easylogin.cloud/")!)
+        
+        server = ELServer.sharedInstance()
         
         ELCachingDBProxy.sharedInstance().testXPCConnection { (error) in
             if let error = error {
@@ -114,7 +114,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             })
         }
         
-        server?.getAllRecords(withEntity: ELUser.recordEntity(), completionBlock: { (records, error) in
+        server?.getAllRecords(withEntityClass:ELUser.recordClass(), completionBlock: { (records, error) in
             
             if let records = records {
                 
