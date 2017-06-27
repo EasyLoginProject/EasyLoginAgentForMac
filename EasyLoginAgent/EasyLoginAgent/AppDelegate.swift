@@ -29,7 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         registerMyDevice { (myself) in
             self.myRecord = myself
-            self.syncRegisteredUsers()
         }
         
         notificationObject = NotificationCenter.default.addObserver(forName:Notification.Name(kELServerUpdateNotification), object:nil, queue:nil, using: { (notification) in
