@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F8D620C91F08FFC700D45327 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D620C81F08FFC700D45327 /* AppDelegate.m */; };
+		F8D620C91F08FFC700D45327 /* ELAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D620C81F08FFC700D45327 /* ELAgent.m */; };
 		F8D620CC1F08FFC700D45327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D620CB1F08FFC700D45327 /* main.m */; };
 		F8D620DD1F08FFEE00D45327 /* EasyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D620DC1F08FFEE00D45327 /* EasyLogin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F8D620C41F08FFC700D45327 /* EasyLoginAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLoginAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8D620C71F08FFC700D45327 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F8D620C81F08FFC700D45327 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F8D620C71F08FFC700D45327 /* ELAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELAgent.h; sourceTree = "<group>"; };
+		F8D620C81F08FFC700D45327 /* ELAgent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELAgent.m; sourceTree = "<group>"; };
 		F8D620CB1F08FFC700D45327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F8D620D51F08FFC700D45327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8D620DC1F08FFEE00D45327 /* EasyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyLogin.framework; path = ../../../../../../../Library/Frameworks/EasyLogin.framework; sourceTree = "<group>"; };
@@ -53,8 +53,8 @@
 		F8D620C61F08FFC700D45327 /* EasyLoginAgent */ = {
 			isa = PBXGroup;
 			children = (
-				F8D620C71F08FFC700D45327 /* AppDelegate.h */,
-				F8D620C81F08FFC700D45327 /* AppDelegate.m */,
+				F8D620C71F08FFC700D45327 /* ELAgent.h */,
+				F8D620C81F08FFC700D45327 /* ELAgent.m */,
 				F8D620D51F08FFC700D45327 /* Info.plist */,
 				F8D620CA1F08FFC700D45327 /* Supporting Files */,
 			);
@@ -165,7 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8D620CC1F08FFC700D45327 /* main.m in Sources */,
-				F8D620C91F08FFC700D45327 /* AppDelegate.m in Sources */,
+				F8D620C91F08FFC700D45327 /* ELAgent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +318,7 @@
 				F8D620DA1F08FFC700D45327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

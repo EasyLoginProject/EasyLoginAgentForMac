@@ -7,14 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "AppDelegate.h"
-int main(int argc, const char * argv[]) {
-    NSApplication * application = [NSApplication sharedApplication];
-    
-    AppDelegate * appDelegate = [AppDelegate new];
-    
-    [application setDelegate:appDelegate];
-    [application run];
+#import "ELAgent.h"
 
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        ELAgent * agent = [ELAgent new];
+        [agent start];   
+            do {
+                @autoreleasepool {
+                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+                    [[NSRunLoop currentRunLoop] runMode:NSRunLoopCommonModes beforeDate:[NSDate distantFuture]];
+                }
+            } while (YES);
+    }
     return EXIT_SUCCESS;
 }
