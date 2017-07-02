@@ -1,0 +1,345 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F81DDA9F1EE9D2480082D494 /* EasyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81DDA9E1EE9D2480082D494 /* EasyLogin.framework */; };
+		F87E22091EE875AC00CB14A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87E22081EE875AC00CB14A0 /* AppDelegate.swift */; };
+		F87E220D1EE875AC00CB14A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F87E220C1EE875AC00CB14A0 /* Assets.xcassets */; };
+		F87E22101EE875AC00CB14A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F87E220E1EE875AC00CB14A0 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F81DDA8D1EE9CF880082D494 /* libEasyLoginMacLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEasyLoginMacLib.a; path = ../Vendors/EasyLoginLibrary/EasyLoginMacLib/build/Debug/libEasyLoginMacLib.a; sourceTree = "<group>"; };
+		F81DDA9E1EE9D2480082D494 /* EasyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyLogin.framework; path = ../../../../../../Library/Frameworks/EasyLogin.framework; sourceTree = "<group>"; };
+		F87E22051EE875AC00CB14A0 /* EasyLoginAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLoginAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F87E22081EE875AC00CB14A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F87E220C1EE875AC00CB14A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F87E220F1EE875AC00CB14A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F87E22111EE875AC00CB14A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8F159E71F00EC1300DF65F1 /* EasyLoginAgent-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EasyLoginAgent-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F87E22021EE875AC00CB14A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F81DDA9F1EE9D2480082D494 /* EasyLogin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F87E21FC1EE875AC00CB14A0 = {
+			isa = PBXGroup;
+			children = (
+				F87E22071EE875AC00CB14A0 /* EasyLoginAgent */,
+				F87E22061EE875AC00CB14A0 /* Products */,
+				F87E22701EE9285800CB14A0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F87E22061EE875AC00CB14A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F87E22051EE875AC00CB14A0 /* EasyLoginAgent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F87E22071EE875AC00CB14A0 /* EasyLoginAgent */ = {
+			isa = PBXGroup;
+			children = (
+				F8F159E71F00EC1300DF65F1 /* EasyLoginAgent-Bridging-Header.h */,
+				F87E22081EE875AC00CB14A0 /* AppDelegate.swift */,
+				F87E220C1EE875AC00CB14A0 /* Assets.xcassets */,
+				F87E220E1EE875AC00CB14A0 /* Main.storyboard */,
+				F87E22111EE875AC00CB14A0 /* Info.plist */,
+			);
+			path = EasyLoginAgent;
+			sourceTree = "<group>";
+		};
+		F87E22701EE9285800CB14A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F81DDA9E1EE9D2480082D494 /* EasyLogin.framework */,
+				F81DDA8D1EE9CF880082D494 /* libEasyLoginMacLib.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F87E22041EE875AC00CB14A0 /* EasyLoginAgent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F87E22141EE875AC00CB14A0 /* Build configuration list for PBXNativeTarget "EasyLoginAgent" */;
+			buildPhases = (
+				F88185581F0231C100A54894 /* GitVersion */,
+				F87E22011EE875AC00CB14A0 /* Sources */,
+				F87E22021EE875AC00CB14A0 /* Frameworks */,
+				F87E22031EE875AC00CB14A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyLoginAgent;
+			productName = EasyLoginAgent;
+			productReference = F87E22051EE875AC00CB14A0 /* EasyLoginAgent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F87E21FD1EE875AC00CB14A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = EasyLogin;
+				TargetAttributes = {
+					F87E22041EE875AC00CB14A0 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = JXHB9UP6QZ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F87E22001EE875AC00CB14A0 /* Build configuration list for PBXProject "EasyLoginAgent" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F87E21FC1EE875AC00CB14A0;
+			productRefGroup = F87E22061EE875AC00CB14A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F87E22041EE875AC00CB14A0 /* EasyLoginAgent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F87E22031EE875AC00CB14A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F87E220D1EE875AC00CB14A0 /* Assets.xcassets in Resources */,
+				F87E22101EE875AC00CB14A0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F88185581F0231C100A54894 /* GitVersion */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = GitVersion;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -o errexit\nset -o nounset\n\nVERSION=$(git rev-list HEAD | wc -l | bc)\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $VERSION\" \"${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F87E22011EE875AC00CB14A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F87E22091EE875AC00CB14A0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F87E220E1EE875AC00CB14A0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F87E220F1EE875AC00CB14A0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F87E22121EE875AC00CB14A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F87E22131EE875AC00CB14A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		F87E22151EE875AC00CB14A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = EasyLoginAgent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.EasyLoginAgent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyLoginAgent/EasyLoginAgent-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F87E22161EE875AC00CB14A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = JXHB9UP6QZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = EasyLoginAgent/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.EasyLoginAgent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyLoginAgent/EasyLoginAgent-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F87E22001EE875AC00CB14A0 /* Build configuration list for PBXProject "EasyLoginAgent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F87E22121EE875AC00CB14A0 /* Debug */,
+				F87E22131EE875AC00CB14A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F87E22141EE875AC00CB14A0 /* Build configuration list for PBXNativeTarget "EasyLoginAgent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F87E22151EE875AC00CB14A0 /* Debug */,
+				F87E22161EE875AC00CB14A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F87E21FD1EE875AC00CB14A0 /* Project object */;
+}
