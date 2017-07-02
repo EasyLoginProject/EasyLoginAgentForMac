@@ -26,16 +26,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
+        notificationObject = NotificationCenter.default.addObserver(forName:Notification.Name(kELServerUpdateNotification), object:nil, queue:nil, using: { (notification) in
+            print("EasyLoginAgent - Server has changed, we start the sync")
+            self.syncRegisteredUsers()
+        })
         
         registerMyDevice { (myself) in
             self.myRecord = myself
             self.syncRegisteredUsers()
         }
-        
-        notificationObject = NotificationCenter.default.addObserver(forName:Notification.Name(kELServerUpdateNotification), object:nil, queue:nil, using: { (notification) in
-            print("EasyLoginAgent - Server has changed, we start the sync")
-            self.syncRegisteredUsers()
-        })
     }
     
     func registerMyDevice(completionHandler: @escaping ((ELDevice?) -> ())) {
