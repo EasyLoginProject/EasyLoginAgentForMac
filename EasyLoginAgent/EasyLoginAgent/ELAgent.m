@@ -121,44 +121,48 @@
     // Temporary implementation where all users are synced
     [self.server getAllRecordsWithEntityClass:[ELUser recordClass]
                               completionBlock:^(NSArray<__kindof ELRecord *> * _Nullable records, NSError * _Nullable error) {
-                                  NSMutableSet *wantedUUIDs = [NSMutableSet new];
-                                  for (ELUser *partialUserToSync in records) {
-                                      [self.server getUpdatedRecord:partialUserToSync
-                                                    completionBlock:^(__kindof ELRecord * _Nullable updatedRecord, NSError * _Nullable error) {
-                                                        
-                                                        if (updatedRecord) {
-                                                            NSLog(@"EasyLoginAgent - Register record: %@", updatedRecord);
-                                                            [[ELCachingDBProxy sharedInstance] registerRecord:updatedRecord.dictionaryRepresentation
-                                                                                                       ofType:updatedRecord.recordEntity
-                                                                                                     withUUID:updatedRecord.identifier];
-                                                        } else {
-                                                            NSLog(@"EasyLoginAgent - Unable to find updated info for record of type %@ with identifier %@", partialUserToSync.recordEntity, partialUserToSync.identifier);
-                                                        }
-                                                    }];
+                                  if (!error && records) {
+                                      NSMutableSet *wantedUUIDs = [NSMutableSet new];
+                                      for (ELUser *partialUserToSync in records) {
+                                          [self.server getUpdatedRecord:partialUserToSync
+                                                        completionBlock:^(__kindof ELRecord * _Nullable updatedRecord, NSError * _Nullable error) {
+                                                            
+                                                            if (updatedRecord) {
+                                                                NSLog(@"EasyLoginAgent - Register record: %@", updatedRecord);
+                                                                [[ELCachingDBProxy sharedInstance] registerRecord:updatedRecord.dictionaryRepresentation
+                                                                                                           ofType:updatedRecord.recordEntity
+                                                                                                         withUUID:updatedRecord.identifier];
+                                                            } else {
+                                                                NSLog(@"EasyLoginAgent - Unable to find updated info for record of type %@ with identifier %@", partialUserToSync.recordEntity, partialUserToSync.identifier);
+                                                            }
+                                                        }];
+                                          
+                                          [wantedUUIDs addObject:partialUserToSync.identifier];
+                                      }
                                       
-                                      [wantedUUIDs addObject:partialUserToSync.identifier];
-                                  }
-                                  
-                                  NSLog(@"EasyLoginAgent - Fetch all registered users for cleanup");
-                                  [[ELCachingDBProxy sharedInstance] getAllRegisteredUUIDsOfType:[ELUser recordEntity]
-                                                                            andCompletionHandler:^(NSArray<NSString *> *results, NSError *error) {
-                                                                                if ([results count] > 0) {
-                                                                                    NSMutableSet *unwantedUUIDs = [NSMutableSet setWithArray:results];
-                                                                                    [unwantedUUIDs minusSet:wantedUUIDs];
-                                                                                    
-                                                                                    for (NSString *unwantedUUID in unwantedUUIDs) {
-                                                                                        NSLog(@"EasyLoginAgent - Unregister user with UUID %@", unwantedUUID);
-                                                                                        [[ELCachingDBProxy sharedInstance] unregisterRecordOfType:[ELUser recordEntity]
-                                                                                                                                         withUUID:unwantedUUID];
+                                      NSLog(@"EasyLoginAgent - Fetch all registered users for cleanup");
+                                      [[ELCachingDBProxy sharedInstance] getAllRegisteredUUIDsOfType:[ELUser recordEntity]
+                                                                                andCompletionHandler:^(NSArray<NSString *> *results, NSError *error) {
+                                                                                    if ([results count] > 0) {
+                                                                                        NSMutableSet *unwantedUUIDs = [NSMutableSet setWithArray:results];
+                                                                                        [unwantedUUIDs minusSet:wantedUUIDs];
+                                                                                        
+                                                                                        for (NSString *unwantedUUID in unwantedUUIDs) {
+                                                                                            NSLog(@"EasyLoginAgent - Unregister user with UUID %@", unwantedUUID);
+                                                                                            [[ELCachingDBProxy sharedInstance] unregisterRecordOfType:[ELUser recordEntity]
+                                                                                                                                             withUUID:unwantedUUID];
+                                                                                        }
+                                                                                        
+                                                                                    } else {
+                                                                                        NSLog(@"EasyLoginAgent - No registered UUIDs found during the cleanup step.");
                                                                                     }
                                                                                     
-                                                                                } else {
-                                                                                    NSLog(@"EasyLoginAgent - No registered UUIDs found during the cleanup step.");
-                                                                                }
-                                                                                
-                                                                                NSLog(@"EasyLoginAgent - Cleanup done");
-                                                                            }];
-                                  
+                                                                                    NSLog(@"EasyLoginAgent - Cleanup done");
+                                                                                }];
+
+                                  } else {
+                                      NSLog(@"EasyLoginAgent - Unable to list assigned records: %@", error);
+                                  }
                                   
                               }];
 }
